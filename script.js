@@ -23,8 +23,9 @@ const updateHeaderTransparency = () => {
         return;
     }
 
-    const shouldBeTransparent = window.scrollY > 40;
-    header.classList.toggle('is-transparent', shouldBeTransparent);
+    const isAtTop = window.scrollY < 24;
+    header.classList.toggle('is-transparent', isAtTop);
+    header.classList.toggle('is-splash', !isAtTop);
 };
 
 updateHeaderTransparency();

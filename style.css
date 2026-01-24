@@ -45,7 +45,8 @@ a {
     background-color: rgba(11, 13, 16, 0.9);
     border-bottom: 1px solid var(--border);
     backdrop-filter: blur(12px);
-    transition: background-color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+    transition: background-color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease,
+        box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 .site-header.is-transparent {
@@ -54,17 +55,26 @@ a {
     backdrop-filter: none;
 }
 
+.site-header.is-splash {
+    background: linear-gradient(135deg, rgba(11, 13, 16, 0.96), rgba(17, 19, 24, 0.9));
+    border-color: rgba(61, 232, 255, 0.35);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
 nav.nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 0;
+    transition: padding 0.35s ease;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
     gap: 1.75rem;
+    transition: gap 0.35s ease, transform 0.35s ease;
 }
 
 .nav-links a {
@@ -84,6 +94,19 @@ nav.nav-container {
 .site-header.is-transparent .nav-links a {
     color: var(--text-primary);
     text-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+.site-header.is-splash nav.nav-container {
+    padding: 2.15rem 0;
+}
+
+.site-header.is-splash .nav-links {
+    gap: 2.5rem;
+    transform: translateY(2px);
+}
+
+.site-header.is-splash .nav-links a {
+    color: var(--text-primary);
 }
 
 .logo {
