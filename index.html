@@ -10,10 +10,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="intro-overlay" id="intro-overlay" role="dialog" aria-modal="true" aria-labelledby="intro-title" tabindex="-1">
+        <div class="intro-logo-wrap">
+            <img src="assets/logo.svg" alt="Fee The Developer wordmark" class="intro-logo">
+            <span id="intro-title" class="visually-hidden">Fee The Developer</span>
+        </div>
+    </div>
     <header class="site-header">
         <nav class="container nav-container">
             <div class="logo-container">
-                <img src="assets/logo.svg" alt="Fee The Developer logo" class="logo">
+                <img src="assets/logo.svg" alt="Fee The Developer logo" class="logo" data-intro-target>
             </div>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
@@ -23,16 +29,16 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <div class="hero container">
+    </header>
+
+    <main>
+        <section class="hero container">
             <div class="hero-content">
                 <h1 data-reveal>Designing and engineering digital systems that scale.</h1>
                 <p data-reveal>Product, web, and automation—built with precision for teams that need clarity and speed.</p>
                 <a href="#services" class="cta-button" data-reveal>Explore Our Services</a>
             </div>
-        </div>
-    </header>
-
-    <main>
+        </section>
         <section id="services" class="section container">
             <h2 data-reveal>Core Services</h2>
             <div class="grid three-column">
