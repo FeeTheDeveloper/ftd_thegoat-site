@@ -1,16 +1,18 @@
-
 // Scroll reveal logic using IntersectionObserver
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-});
+const observer = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    },
+    { threshold: 0.15 }
+);
 
-// Observe sections for reveal effect
-const sections = document.querySelectorAll('.section');
-sections.forEach(section => {
-    section.classList.add('reveal');
-    observer.observe(section);
+// Observe elements for reveal effect
+const revealItems = document.querySelectorAll('[data-reveal], .section');
+revealItems.forEach(item => {
+    item.classList.add('reveal');
+    observer.observe(item);
 });
