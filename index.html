@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fee The Developer LLC | Precision & Clarity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <header class="site-header">
         <nav class="container nav-container">
             <div class="logo-container">
                 <img src="assets/logo.svg" alt="Fee The Developer logo" class="logo">
@@ -21,15 +24,17 @@
             </ul>
         </nav>
         <div class="hero container">
-            <h1>Veteran‑Owned Software Engineering & Full Stack Development</h1>
-            <p>Delivering high‑performance websites & web applications with precision & clarity.</p>
-            <a href="#services" class="cta-button">Explore Our Services</a>
+            <div class="hero-content">
+                <h1 data-reveal>Designing and engineering digital systems that scale.</h1>
+                <p data-reveal>Product, web, and automation—built with precision for teams that need clarity and speed.</p>
+                <a href="#services" class="cta-button" data-reveal>Explore Our Services</a>
+            </div>
         </div>
     </header>
 
     <main>
         <section id="services" class="section container">
-            <h2>Core Services</h2>
+            <h2 data-reveal>Core Services</h2>
             <div class="grid three-column">
                 <div class="service-card">Custom Website Design & Development</div>
                 <div class="service-card">Full Stack Web Applications (Frontend & Backend)</div>
@@ -44,7 +49,7 @@
         </section>
 
         <section id="consultation" class="section container">
-            <h2>Consultation Options</h2>
+            <h2 data-reveal>Consultation Options</h2>
             <div class="consultation-grid">
                 <div class="consultation-card">
                     <h3>Discovery Call (30 Minutes) <span class="price">Free</span></h3>
@@ -62,7 +67,7 @@
         </section>
 
         <section id="pricing" class="section container">
-            <h2>Pricing Structure</h2>
+            <h2 data-reveal>Pricing Structure</h2>
             <ul class="pricing-list">
                 <li><span>Basic Business Website (5 Pages):</span> $2,500 – $4,000</li>
                 <li><span>Advanced Business Website (8–12 Pages):</span> $5,000 – $8,500</li>
@@ -74,7 +79,7 @@
         </section>
 
         <section id="duties" class="section container">
-            <h2>Professional Duties & Responsibilities</h2>
+            <h2 data-reveal>Professional Duties & Responsibilities</h2>
             <ol class="duties-list">
                 <li>Client requirement analysis and technical discovery</li>
                 <li>System architecture and database design</li>
@@ -87,7 +92,7 @@
         </section>
 
         <section id="positioning" class="section container">
-            <h2>Competitive Positioning</h2>
+            <h2 data-reveal>Competitive Positioning</h2>
             <p>
                 Compared to large agencies and freelance developers, Fee The Developer LLC delivers
                 enterprise‑level execution without bloated overhead. Unlike template‑driven agencies, all
@@ -98,13 +103,13 @@
         </section>
 
         <section id="contact" class="section container">
-            <h2>Contact</h2>
+            <h2 data-reveal>Contact</h2>
             <p>Connect with us on Instagram: <a href="https://instagram.com/fee_the_developer" target="_blank">@fee_the_developer</a></p>
             <p>Email us: <a href="mailto:contact@feethedeveloper.com">contact@feethedeveloper.com</a></p>
         </section>
     </main>
 
-    <footer class="container">
+    <footer class="container site-footer">
         <p>&copy; 2026 Fee The Developer LLC. All rights reserved.</p>
     </footer>
 
