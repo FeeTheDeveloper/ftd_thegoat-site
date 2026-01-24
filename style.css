@@ -48,6 +48,8 @@ nav.nav-container {
 
 .logo {
     height: 50px;
+    width: auto;
+    display: block;
 }
 
 .hero {
