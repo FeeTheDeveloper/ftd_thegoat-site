@@ -42,9 +42,16 @@ a {
     position: sticky;
     top: 0;
     z-index: 10;
-    background: rgba(11, 13, 16, 0.9);
+    background-color: rgba(11, 13, 16, 0.9);
     border-bottom: 1px solid var(--border);
     backdrop-filter: blur(12px);
+    transition: background-color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.site-header.is-transparent {
+    background-color: transparent;
+    border-color: transparent;
+    backdrop-filter: none;
 }
 
 nav.nav-container {
@@ -74,11 +81,20 @@ nav.nav-container {
     transform: translateY(-1px);
 }
 
+.site-header.is-transparent .nav-links a {
+    color: var(--text-primary);
+    text-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
 .logo {
     height: 48px;
     width: auto;
     display: block;
     filter: brightness(0) invert(1);
+}
+
+.site-header.is-transparent .logo {
+    filter: brightness(0) invert(1) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.45));
 }
 
 .hero {
