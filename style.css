@@ -66,7 +66,7 @@ nav.nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.55rem 0;
+    padding: 0.4rem 0;
     transition: padding 0.35s ease;
 }
 
@@ -97,7 +97,7 @@ nav.nav-container {
 }
 
 .site-header.is-splash nav.nav-container {
-    padding: 0.8rem 0;
+    padding: 0.55rem 0;
 }
 
 .site-header.is-splash .nav-links {
@@ -110,7 +110,7 @@ nav.nav-container {
 }
 
 .logo {
-    height: 20px;
+    height: 24px;
     width: auto;
     display: block;
     filter: brightness(0) invert(1);
