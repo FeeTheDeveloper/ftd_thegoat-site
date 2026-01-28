@@ -12,7 +12,7 @@ interface PageTransitionProps {
 
 export function PageTransition({ children, className }: PageTransitionProps) {
   const reducedMotion = useReducedMotion();
-  const variants = createFadeIn(reducedMotion);
+  const variants = createFadeIn(reducedMotion ?? false);
 
   return (
     <motion.div
