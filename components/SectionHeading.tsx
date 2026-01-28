@@ -1,3 +1,8 @@
+'use client';
+
+import { Reveal } from '../motion/Reveal';
+import { Stagger } from '../motion/Stagger';
+
 interface SectionHeadingProps {
   eyebrow?: string;
   title: string;
@@ -6,20 +11,26 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ eyebrow, title, subtitle }: SectionHeadingProps) {
   return (
-    <div className="space-y-3">
+    <Stagger className="space-y-3">
       {eyebrow ? (
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-          {eyebrow}
-        </p>
+        <Reveal useParent>
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+            {eyebrow}
+          </p>
+        </Reveal>
       ) : null}
-      <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-        {title}
-      </h2>
+      <Reveal useParent>
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+          {title}
+        </h2>
+      </Reveal>
       {subtitle ? (
-        <p className="max-w-2xl text-base text-slate-600 sm:text-lg">
-          {subtitle}
-        </p>
+        <Reveal useParent>
+          <p className="max-w-2xl text-base text-slate-600 sm:text-lg">
+            {subtitle}
+          </p>
+        </Reveal>
       ) : null}
-    </div>
+    </Stagger>
   );
 }
