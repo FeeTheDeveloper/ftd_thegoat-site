@@ -14,7 +14,7 @@ const defaultMessages: ChatMessage[] = [
   {
     role: 'assistant',
     content:
-      "Hi, I'm Fee's assistant. Tell me about your project goals, timeline, and budget, and I'll point you to the next step.",
+      'You are connected to Fee’s concierge. Share the outcome, timeline, and constraints, and I will route the next step.',
   },
 ];
 
@@ -124,10 +124,10 @@ export function ChatWidget() {
           <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
             <div>
               <p className="text-sm font-semibold text-slate-900">
-                Fee&apos;s Assistant
+                Fee&apos;s Concierge
               </p>
               <p className="text-xs text-slate-500">
-                Fast answers, clear next steps.
+                Executive answers, clear next steps.
               </p>
             </div>
             <button
@@ -201,7 +201,7 @@ export function ChatWidget() {
         className="flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-slate-800"
         aria-label="Open chat"
       >
-        {isOpen ? 'Hide chat' : 'Chat with Fee'}
+        {isOpen ? 'Hide Concierge' : 'Concierge'}
       </button>
     </div>
   );

@@ -29,11 +29,6 @@ export function HeroSection({ hero, site }: HeroSectionProps) {
           <div>
             <div className="flex flex-wrap gap-3">
               <Button href={site.primaryCta.href} label={site.primaryCta.label} />
-              <Button
-                href={site.secondaryCta.href}
-                label={site.secondaryCta.label}
-                variant="secondary"
-              />
             </div>
           </div>
         </div>

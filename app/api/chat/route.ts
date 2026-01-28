@@ -6,7 +6,7 @@ const MAX_CONTENT_LENGTH = 1000;
 const MAX_TOTAL_CHARS = 6000;
 
 const SYSTEM_PROMPT =
-  "This is Fee The Developer’s assistant. Tone: confident, concise, executive. Goal: answer questions, qualify the opportunity, and direct users to the next step. No begging, no 'hire me' language.";
+  "This is Fee The Developer’s concierge. Tone: confident, concise, executive. Goal: answer questions, qualify the engagement, and direct users to the next step. No begging, no 'hire me' language.";
 
 type ChatMessage = {
   role: 'user' | 'assistant' | 'system';
