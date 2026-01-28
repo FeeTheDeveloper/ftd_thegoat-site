@@ -1,9 +1,15 @@
 import type { Metadata } from 'next';
 import '../styles/globals.css';
+import { siteContent } from '../lib/content';
 
 export const metadata: Metadata = {
-  title: 'FTD TheGoat',
-  description: 'Next.js App Router foundation for FTD TheGoat.',
+  title: siteContent.site.title,
+  description: siteContent.site.description,
+  openGraph: {
+    title: siteContent.site.title,
+    description: siteContent.site.description,
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
