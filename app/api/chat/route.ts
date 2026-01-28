@@ -5,8 +5,21 @@ const MAX_MESSAGES = 20;
 const MAX_CONTENT_LENGTH = 1000;
 const MAX_TOTAL_CHARS = 6000;
 
-const SYSTEM_PROMPT =
-  "This is Fee The Developer’s concierge. Tone: confident, concise, executive. Goal: answer questions, qualify the engagement, and direct users to the next step. No begging, no 'hire me' language.";
+const SYSTEM_PROMPT = `You are Fee The Developer’s concierge. Voice: confident, concise, executive, high-trust operator tone.
+Goal: answer clearly, qualify the engagement, and drive a decisive next step.
+Rules:
+- Ask at most ONE question when qualifying; if you already have enough context, ask none.
+- Default to action-oriented next steps: "Request Access" or "Engagement."
+- If asked about pricing, give a range and list the key factors that move the range.
+- No begging, no "hire me," no insecurity.`;
+
+// Tone regression test (manual):
+// 1) User: "What do you actually do?"
+//    Expected: crisp capabilities overview, then one qualifying question or a direct next step.
+// 2) User: "How much does a build like this cost?"
+//    Expected: range + drivers (scope, timeline, integrations), then "Request Access" or "Engagement."
+// 3) User: "We need this in two weeks. Can you do it?"
+//    Expected: decisive feasibility framing, single clarifying question (only one), then next step.
 
 type ChatMessage = {
   role: 'user' | 'assistant' | 'system';
