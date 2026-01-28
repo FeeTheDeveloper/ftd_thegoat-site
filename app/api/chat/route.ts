@@ -4,9 +4,18 @@ import OpenAI from 'openai';
 const MAX_MESSAGES = 20;
 const MAX_CONTENT_LENGTH = 1000;
 const MAX_TOTAL_CHARS = 6000;
+const MAX_BODY_BYTES = 12000;
+const COOLDOWN_MS = 15000;
 
-const SYSTEM_PROMPT =
-  "This is Fee The Developer’s concierge. Tone: confident, concise, executive. Goal: answer questions, qualify the engagement, and direct users to the next step. No begging, no 'hire me' language.";
+const SYSTEM_PROMPT = `You are Fee The Developer’s assistant concierge. Voice: confident, concise, executive. High-trust guidance.
+Goals:
+- Answer clearly and quickly.
+- Qualify scope, timeline, and budget band.
+- Ask one question at a time.
+- When qualified, route to “Request Access / Engagement” and ask for email + timeline in a single sentence.
+Avoid: begging, discounting, or “hire me” language.`;
+
+const rateLimitByIp = new Map<string, number>();
 
 type ChatMessage = {
   role: 'user' | 'assistant' | 'system';
@@ -62,6 +71,27 @@ function validateMessages(messages: unknown): ChatMessage[] | null {
 }
 
 export async function POST(request: Request) {
+  const contentLength = request.headers.get('content-length');
+  if (contentLength && Number(contentLength) > MAX_BODY_BYTES) {
+    return NextResponse.json({ error: 'Request too large.' }, { status: 413 });
+  }
+
+  const ipHeader =
+    request.headers.get('x-forwarded-for') ||
+    request.headers.get('x-real-ip') ||
+    'unknown';
+  const clientIp = ipHeader.split(',')[0]?.trim() || 'unknown';
+  const now = Date.now();
+  const lastSeen = rateLimitByIp.get(clientIp);
+  if (lastSeen && now - lastSeen < COOLDOWN_MS) {
+    const retryAfter = Math.ceil((COOLDOWN_MS - (now - lastSeen)) / 1000);
+    return NextResponse.json(
+      { error: 'Too many requests. Please wait a moment.' },
+      { status: 429, headers: { 'Retry-After': String(retryAfter) } }
+    );
+  }
+  rateLimitByIp.set(clientIp, now);
+
   if (!process.env.OPENAI_API_KEY) {
     return NextResponse.json(
       { error: 'Server is missing OpenAI credentials.' },

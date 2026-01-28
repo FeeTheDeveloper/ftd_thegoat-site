@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 
 type ChatMessage = {
   role: 'user' | 'assistant' | 'system';
@@ -49,7 +49,21 @@ export function ChatWidget() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [leadEmail, setLeadEmail] = useState('');
+  const [leadTimeline, setLeadTimeline] = useState('');
+  const [leadStatus, setLeadStatus] = useState<'idle' | 'submitting' | 'sent'>(
+    'idle'
+  );
+  const [leadError, setLeadError] = useState<string | null>(null);
   const endRef = useRef<HTMLDivElement | null>(null);
+
+  const quickReplies = [
+    'Build a website',
+    'Fix a deployment',
+    'Add a chatbot',
+    'APIs & Integrations',
+    'Automation',
+  ];
 
   useEffect(() => {
     const stored = safeParseMessages(localStorage.getItem(STORAGE_KEY));
@@ -68,8 +82,8 @@ export function ChatWidget() {
     }
   }, [isOpen, messages]);
 
-  const handleSend = async () => {
-    const trimmed = input.trim();
+  const handleSend = async (override?: string) => {
+    const trimmed = (override ?? input).trim();
     if (!trimmed || isLoading) {
       return;
     }
@@ -114,6 +128,50 @@ export function ChatWidget() {
       setError(message);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const isLeadCaptureTriggered = messages.some(
+    (message) =>
+      message.role === 'assistant' &&
+      /request access\s*\/\s*engagement/i.test(message.content)
+  );
+
+  const handleQuickReply = (message: string) => {
+    if (isLoading) {
+      return;
+    }
+    setIsOpen(true);
+    setInput(message);
+    void handleSend(message);
+  };
+
+  const handleLeadSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (leadStatus === 'submitting') {
+      return;
+    }
+
+    setLeadError(null);
+    setLeadStatus('submitting');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: leadEmail, timeline: leadTimeline }),
+      });
+
+      if (!response.ok) {
+        const payload = await response.json().catch(() => ({}));
+        throw new Error(payload?.error || 'Unable to send details.');
+      }
+
+      setLeadStatus('sent');
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Unable to send details.';
+      setLeadError(message);
+      setLeadStatus('idle');
     }
   };
 
@@ -169,6 +227,58 @@ export function ChatWidget() {
             <div ref={endRef} />
           </div>
           <div className="border-t border-slate-100 px-4 py-3">
+            <div className="mb-3 flex flex-wrap gap-2">
+              {quickReplies.map((label) => (
+                <button
+                  key={label}
+                  type="button"
+                  onClick={() => handleQuickReply(label)}
+                  className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            {isLeadCaptureTriggered ? (
+              <div className="mb-3 rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                  Request Access / Engagement
+                </p>
+                {leadStatus === 'sent' ? (
+                  <p className="mt-2 text-sm text-slate-700">
+                    Thanks — we will confirm next steps shortly.
+                  </p>
+                ) : (
+                  <form className="mt-2 grid gap-2" onSubmit={handleLeadSubmit}>
+                    <input
+                      type="email"
+                      value={leadEmail}
+                      onChange={(event) => setLeadEmail(event.target.value)}
+                      placeholder="Email address"
+                      className="rounded-xl border border-slate-200 px-3 py-2 text-sm text-slate-900 focus:border-slate-400 focus:outline-none"
+                      required
+                    />
+                    <input
+                      value={leadTimeline}
+                      onChange={(event) => setLeadTimeline(event.target.value)}
+                      placeholder="Target timeline"
+                      className="rounded-xl border border-slate-200 px-3 py-2 text-sm text-slate-900 focus:border-slate-400 focus:outline-none"
+                      required
+                    />
+                    {leadError ? (
+                      <p className="text-xs text-rose-500">{leadError}</p>
+                    ) : null}
+                    <button
+                      type="submit"
+                      disabled={leadStatus === 'submitting'}
+                      className="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300"
+                    >
+                      {leadStatus === 'submitting' ? 'Sending…' : 'Send details'}
+                    </button>
+                  </form>
+                )}
+              </div>
+            ) : null}
             {error ? (
               <p className="mb-2 text-xs text-rose-500">{error}</p>
             ) : null}
