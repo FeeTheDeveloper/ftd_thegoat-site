@@ -1,193 +1,195 @@
 export const siteContent = {
   site: {
     name: 'Fee The Developer',
-    title: 'Fee The Developer | Developer for Hire',
+    title: 'Fee The Developer | Executive Product Engineering',
     description:
-      'Fee The Developer helps product teams ship reliable web experiences, automation, and AI-powered workflows with clear communication and predictable delivery.',
+      'Fee The Developer delivers executive-level product engineering, automation, and AI systems for teams that want inevitability, not noise.',
     primaryCta: {
-      label: 'Hire Me',
+      label: 'Request Access',
       href: '#contact',
     },
-    secondaryCta: {
-      label: 'View Work',
-      href: '#portfolio',
-    },
     nav: [
-      { label: 'Services', href: '#services' },
-      { label: 'Process', href: '#process' },
-      { label: 'Portfolio', href: '#portfolio' },
-      { label: 'Pricing', href: '#pricing' },
-      { label: 'FAQ', href: '#faq' },
+      { label: 'Capabilities', href: '#services' },
+      { label: 'Operating System', href: '#process' },
+      { label: 'Proof', href: '#portfolio' },
+      { label: 'Engagements', href: '#pricing' },
+      { label: 'Standards', href: '#faq' },
       { label: 'Contact', href: '#contact' },
     ],
   },
   hero: {
-    eyebrow: 'Developer for hire',
-    heading: 'Build calm, scalable web experiences with Fee The Developer.',
+    eyebrow: 'Executive product engineering',
+    heading: 'Operate with inevitability. Ship with precision.',
     subheading:
-      'Senior frontend engineering for startups and product teams that need a reliable partner for web apps, APIs, automation, motion, and AI workflows.',
+      'Fee The Developer is a senior product engineering partner for teams that need decisive execution across web platforms, automation, and AI systems.',
     highlights: [
-      'Product-minded delivery with clear weekly updates',
-      'Modern stacks: Next.js, TypeScript, Tailwind, Node',
-      'Launch-ready handoff with documentation and support',
+      'High-stakes delivery with executive clarity',
+      'Modern product systems built to scale quietly',
+      'Measured rollouts with airtight handoff',
     ],
   },
   services: {
-    title: 'Services that remove delivery risk',
+    title: 'Capabilities that make progress inevitable',
     subtitle:
-      'From rapid MVPs to long-term product growth, every engagement is scoped to protect quality and timelines.',
+      'Precision execution across critical product systems, engineered for speed, stability, and leverage.',
     items: [
       {
-        title: 'Web Development',
+        title: 'Product Platforms',
         description:
-          'Responsive, accessible web apps that convert. Built with maintainable design systems and production-ready code.',
+          'High-performance web experiences with resilient architecture, design systems, and conversion discipline.',
       },
       {
-        title: 'APIs & Integrations',
+        title: 'Systems & Integrations',
         description:
-          'Reliable backend endpoints, third-party integrations, and secure data flows that power your product.',
+          'API layers, data flows, and partner integrations that keep revenue and operations stable.',
       },
       {
-        title: 'Automation',
+        title: 'Operational Automation',
         description:
-          'Workflow automation that saves your team hours each week, from dashboards to internal tools.',
+          'Workflow automation and internal tooling that compress cycles and remove coordination drag.',
       },
       {
-        title: 'Motion & Interaction',
+        title: 'Experience Engineering',
         description:
-          'Subtle, professional motion design that improves clarity without overwhelming the user experience.',
+          'Interaction systems and motion polish that make complex products feel inevitable.',
       },
       {
         title: 'Applied AI',
         description:
-          'Practical AI features like summarization, search, and workflow assistants that ship responsibly.',
+          'Human-in-the-loop AI features, governance, and automation that ship responsibly.',
       },
     ],
   },
   process: {
-    title: 'A transparent delivery process',
+    title: 'The operating system',
     subtitle:
-      'You always know what is happening, what is next, and how each milestone ladders to business results.',
-    stepLabel: 'Step',
+      'An execution cadence built for clarity, velocity, and compound results.',
+    stepLabel: 'Layer',
     steps: [
       {
-        title: 'Discovery',
+        title: 'Signal',
         description:
-          'Clarify goals, assess the current stack, and map the highest-impact deliverables with realistic timelines.',
+          'Diagnose constraints, define the target state, and lock on to the leverage points.',
       },
       {
-        title: 'Build',
+        title: 'System',
         description:
-          'Execute in focused sprints with weekly demos, shared documentation, and quality checks built in.',
+          'Build the core system with tight sprints, executive updates, and quality gates.',
       },
       {
-        title: 'Deploy',
+        title: 'Scale',
         description:
-          'Launch with confidence, monitoring, and a handoff plan so your team is never left guessing.',
+          'Release with instrumentation, stability playbooks, and a clean operational handoff.',
       },
     ],
   },
   portfolio: {
-    title: 'Proof of work',
+    title: 'Proof of outcomes',
     subtitle:
-      'Recent engagements and outcomes. Detailed case studies available on request.',
+      'Results backed by standards: speed, stability, security, and executive-grade communication.',
     items: [
       {
-        title: 'SaaS onboarding redesign',
+        title: 'Revenue onboarding acceleration',
         description:
-          'Reduced onboarding time by 35% through a streamlined UX and guided product tour.',
-        tags: ['Next.js', 'Product UX', 'Conversion'],
+          'Cut activation time by 35% while increasing trial-to-paid conversion through systemized onboarding.',
+        tags: ['Activation', 'Lifecycle', 'Conversion'],
       },
       {
-        title: 'Internal operations dashboard',
+        title: 'Operational visibility layer',
         description:
-          'Automated reporting for a logistics team, saving 12+ hours per week.',
-        tags: ['Automation', 'APIs', 'Data'],
+          'Automated reporting and QA workflows that saved 12+ hours weekly and eliminated data drift.',
+        tags: ['Operations', 'Automation', 'Data'],
       },
       {
-        title: 'AI content workflow',
+        title: 'AI governance pipeline',
         description:
-          'Implemented a safe AI pipeline for content review and approval with human oversight.',
-        tags: ['AI', 'Workflow', 'Governance'],
+          'Implemented human-in-the-loop AI review with audit trails and policy-grade guardrails.',
+        tags: ['AI', 'Governance', 'Reliability'],
       },
     ],
   },
   pricing: {
-    title: 'Flexible pricing for every stage',
+    title: 'Engagement models',
     subtitle:
-      'Clear scope, transparent rates, and predictable delivery. Custom retainers available.',
+      'Structured engagement paths designed for decisive execution.',
     tiers: [
       {
-        name: 'Starter',
-        price: '$3,500',
-        cadence: 'per project',
-        description: 'Best for landing pages, MVPs, and small updates.',
+        name: 'Strategic Sprint',
+        price: 'From $5,000',
+        cadence: 'per engagement',
+        description: 'Focused delivery for a single high-impact outcome.',
         features: [
-          '2-week delivery window',
-          'Focused scope with rapid iteration',
-          'Email support and handoff docs',
+          '1-2 week execution window',
+          'Executive updates and decision logs',
+          'Launch-ready handoff package',
         ],
-        cta: { label: 'Start a project', href: '#contact' },
+        cta: { label: 'Start an Engagement', href: '#contact' },
       },
       {
-        name: 'Growth',
-        price: '$6,500',
+        name: 'Operating Partner',
+        price: 'From $9,000',
         cadence: 'per month',
-        description: 'For teams that need ongoing product development.',
+        description: 'Embedded execution for teams shipping continuous value.',
         features: [
-          'Dedicated sprint planning',
-          'Weekly demos and reporting',
-          'Priority bug fixes and improvements',
+          'Dedicated sprint cadence',
+          'Weekly executive briefings',
+          'Priority delivery and stability work',
         ],
-        cta: { label: 'Book a call', href: '#contact' },
+        cta: { label: 'Engage', href: '#contact' },
       },
       {
-        name: 'Enterprise',
+        name: 'Transformation',
         price: 'Custom',
         cadence: 'retainer',
-        description: 'Flexible support for larger teams and complex systems.',
+        description: 'Multi-team initiatives and platform-level modernization.',
         features: [
-          'Multi-team collaboration',
-          'Security and compliance alignment',
-          'Custom SLAs and rollout planning',
+          'Cross-functional alignment',
+          'Security, compliance, and governance',
+          'Custom SLAs and rollout plans',
         ],
-        cta: { label: 'Request a proposal', href: '#contact' },
+        cta: { label: 'Request Access', href: '#contact' },
       },
     ],
   },
   faq: {
-    title: 'FAQ',
+    title: 'Standards',
     items: [
       {
         question: 'How quickly can we start?',
         answer:
-          'Most engagements kick off within two weeks after scope approval and contract signature.',
+          'Most engagements begin within two weeks once scope and access are confirmed.',
       },
       {
         question: 'Do you work with existing teams?',
         answer:
-          'Yes. I regularly embed with product, design, and engineering teams to deliver alongside them.',
+          'Yes. I embed with product, design, and engineering teams while owning outcomes.',
       },
       {
         question: 'What do you need from us?',
         answer:
-          'Access to current assets, a point of contact, and clear outcomes. I handle the rest.',
+          'Access to current systems, a single decision-maker, and clear outcomes.',
       },
     ],
   },
   contact: {
-    title: 'Ready to build with Fee The Developer?',
+    title: 'Engagement request',
     subtitle:
-      'Share your goals and timeline. You will receive a response within two business days.',
+      'Share the outcome you need. Responses are typically delivered within two business days.',
+    form: {
+      title: 'Request access',
+      description:
+        'Provide the essentials. A short response with next steps will follow.',
+      buttonLabel: 'Request Access',
+    },
     methods: [
       {
-        label: 'Email',
+        label: 'Direct line',
         value: 'hello@feethedeveloper.com',
         href: 'mailto:hello@feethedeveloper.com',
       },
       {
-        label: 'Discovery call',
-        value: 'Schedule a 30-minute intro',
+        label: 'Engagement window',
+        value: 'Next opening in 2 weeks',
         href: '#',
       },
       {
@@ -198,7 +200,7 @@ export const siteContent = {
   },
   footer: {
     summary:
-      'Fee The Developer partners with modern product teams to deliver calm, reliable software.',
+      'Fee The Developer partners with modern product teams to deliver inevitable software outcomes.',
     links: [
       { label: 'LinkedIn', href: '#' },
       { label: 'GitHub', href: '#' },
