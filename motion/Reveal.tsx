@@ -26,7 +26,7 @@ export function Reveal({
   variant = 'fadeUp',
   useParent = false,
 }: RevealProps) {
-  const reducedMotion = useReducedMotion();
+  const reducedMotion = useReducedMotion() ?? false;
   const variants = variantMap[variant](reducedMotion);
 
   return (
