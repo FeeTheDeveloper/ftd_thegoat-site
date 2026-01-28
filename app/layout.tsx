@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '../styles/globals.css';
 import { siteContent } from '../lib/content';
+import { ChatWidget } from '../components/ChatWidget';
 
 export const metadata: Metadata = {
   title: siteContent.site.title,
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen bg-white text-slate-900">
         {children}
+        <ChatWidget />
       </body>
     </html>
   );
