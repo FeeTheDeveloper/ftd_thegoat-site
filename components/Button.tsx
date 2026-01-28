@@ -1,7 +1,4 @@
-'use client';
-
 import Link from 'next/link';
-import { HoverLift } from '../motion/HoverLift';
 
 interface ButtonProps {
   href: string;
@@ -18,7 +15,7 @@ const variantStyles: Record<NonNullable<ButtonProps['variant']>, string> = {
 
 export function Button({ href, label, variant = 'primary' }: ButtonProps) {
   return (
-    <HoverLift className="inline-flex">
+    <span className="inline-flex">
       <Link
         href={href}
         className={`inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition ${
@@ -27,6 +24,6 @@ export function Button({ href, label, variant = 'primary' }: ButtonProps) {
       >
         {label}
       </Link>
-    </HoverLift>
+    </span>
   );
 }
