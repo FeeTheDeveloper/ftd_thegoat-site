@@ -15,7 +15,7 @@ export function Footer({ content }: FooterProps) {
           </p>
           <p className="text-sm text-slate-500">{content.copyright}</p>
         </div>
-        <div className="flex flex-wrap gap-4 text-sm font-medium text-slate-600">
+        <div className="flex flex-wrap items-center gap-4 text-sm font-medium text-slate-600">
           {content.links.map((link) => (
             <Link key={link.label} href={link.href} className="hover:text-slate-900">
               {link.label}

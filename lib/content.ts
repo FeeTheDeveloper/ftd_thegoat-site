@@ -15,6 +15,7 @@ export const siteContent = {
       { label: 'Engagements', href: '#pricing' },
       { label: 'Standards', href: '#faq' },
       { label: 'Contact', href: '#contact' },
+      { label: '$150 Website Special', href: '/special' },
     ],
   },
   hero: {
@@ -184,8 +185,8 @@ export const siteContent = {
     methods: [
       {
         label: 'Direct line',
-        value: 'hello@feethedeveloper.com',
-        href: 'mailto:hello@feethedeveloper.com',
+        value: 'fee@feethedeveloper.com',
+        href: 'mailto:fee@feethedeveloper.com',
       },
       {
         label: 'Engagement window',
@@ -205,8 +206,23 @@ export const siteContent = {
       { label: 'LinkedIn', href: '#' },
       { label: 'GitHub', href: '#' },
       { label: 'Calendly', href: '#' },
+      { label: 'Pay Now – $150', href: 'https://square.link/u/U8SKZ6Gr?src=sheet' },
     ],
     copyright: '© 2024 Fee The Developer. All rights reserved.',
+  },
+  specialOffer: {
+    title: '$150 Website Special',
+    subtitle: 'Top 10 Yelp Dallas Celebration',
+    description:
+      'Complete website design, 2‑year hosting, and domain registration for a single $150 fee. Limited-time offer.',
+    bulletPoints: [
+      'Custom website design (1–3 pages)',
+      '2 years of hosting included',
+      '2 years of domain registration included',
+      'Mobile responsive & optimized',
+    ],
+    payButtonLabel: 'Pay Now – $150',
+    payUrl: 'https://square.link/u/U8SKZ6Gr?src=sheet',
   },
 };
 

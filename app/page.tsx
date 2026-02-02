@@ -5,6 +5,7 @@ import { HeroSection } from '../components/HeroSection';
 import { PortfolioSection } from '../components/PortfolioSection';
 import { PricingSection } from '../components/PricingSection';
 import { ProcessSection } from '../components/ProcessSection';
+import { PromoBanner } from '../components/PromoBanner';
 import { ServicesSection } from '../components/ServicesSection';
 import { StickyHeader } from '../components/StickyHeader';
 import { siteContent } from '../lib/content';
@@ -12,6 +13,7 @@ import { siteContent } from '../lib/content';
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
+      <PromoBanner content={siteContent.specialOffer} />
       <StickyHeader content={siteContent.site} />
       <main>
         <HeroSection hero={siteContent.hero} site={siteContent.site} />

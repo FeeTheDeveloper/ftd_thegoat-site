@@ -58,7 +58,7 @@ export function ContactSection({ content, primaryCta }: ContactSectionProps) {
             </div>
             <form
               className="grid w-full gap-4 lg:max-w-xl"
-              action="mailto:hello@feethedeveloper.com"
+              action="mailto:fee@feethedeveloper.com"
               method="post"
               encType="text/plain"
             >

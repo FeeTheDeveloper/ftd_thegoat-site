@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { SiteContent } from '../lib/content';
+import { siteContent } from '../lib/content';
 import { Button } from './Button';
 
 interface StickyHeaderProps {
@@ -7,6 +8,8 @@ interface StickyHeaderProps {
 }
 
 export function StickyHeader({ content }: StickyHeaderProps) {
+  const { specialOffer } = siteContent;
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 py-4">
@@ -27,10 +30,20 @@ export function StickyHeader({ content }: StickyHeaderProps) {
             </span>
           ))}
         </nav>
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          <Button
+            href={specialOffer.payUrl}
+            label={specialOffer.payButtonLabel}
+            variant="secondary"
+          />
           <Button href={content.primaryCta.href} label={content.primaryCta.label} />
         </div>
-        <div className="md:hidden">
+        <div className="flex items-center gap-2 md:hidden">
+          <Button
+            href={specialOffer.payUrl}
+            label="Pay $150"
+            variant="secondary"
+          />
           <Button
             href={content.primaryCta.href}
             label={content.primaryCta.label}
