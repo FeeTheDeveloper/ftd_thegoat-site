@@ -1,7 +1,7 @@
 /**
  * PAYMENT URL VERIFICATION CHECKLIST:
- * - [x] SquarePayButton component uses https://square.link/u/5dvy3O3D?src=embed
- * - [x] footer "Pay Now – $150" link matches https://square.link/u/5dvy3O3D
+ * - [x] SquarePayButton component uses https://square.link/u/BoMH7jVp?src=embed
+ * - [x] footer "Pay Now – $150" link matches https://square.link/u/BoMH7jVp
  */
 
 export const siteContent = {
@@ -218,7 +218,7 @@ export const siteContent = {
       { label: 'LinkedIn', href: '#' },
       { label: 'GitHub', href: '#' },
       { label: 'Calendly', href: '#' },
-      { label: 'Pay Now – $150', href: 'https://square.link/u/5dvy3O3D' },
+      { label: 'Pay Now – $150', href: 'https://square.link/u/BoMH7jVp' },
     ],
     copyright: '© 2024 Fee The Developer. All rights reserved.',
   },

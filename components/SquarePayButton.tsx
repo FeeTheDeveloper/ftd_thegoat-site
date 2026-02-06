@@ -4,7 +4,7 @@ export function SquarePayButton() {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const url = 'https://square.link/u/5dvy3O3D?src=embed';
+    const url = 'https://square.link/u/BoMH7jVp?src=embed';
     const width = 500;
     const height = Math.round(window.innerHeight * 0.75);
     const left = Math.round((window.innerWidth - width) / 2);
