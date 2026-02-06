@@ -46,21 +46,6 @@ The `LaunchSplash` component uses `BrandLogo` to display a full-screen animated 
 
 ---
 
-## Payment Checkout
-
-Payment is handled by the `SquarePayButton` component (`components/SquarePayButton.tsx`).
-
-- Opens Square checkout in a centered popup window
-- No backend or API required
-
-**Checkout URL:**
-
-```
-https://square.link/u/BoMH7jVp?src=embed
-```
-
----
-
 ## Vercel Deployment (New Project)
 
 ### Step-by-Step Checklist
@@ -95,7 +80,6 @@ After deployment, verify:
 - [ ] Launch splash appears once (then not again in same session)
 - [ ] Header with logo and navigation renders
 - [ ] `/special` page opens and displays the offer
-- [ ] "Pay Now – $150" button opens Square checkout popup
 
 ---
 

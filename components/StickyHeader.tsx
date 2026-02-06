@@ -2,7 +2,6 @@ import Link from 'next/link';
 import type { SiteContent } from '../lib/content';
 import { BrandLogo } from './BrandLogo';
 import { Button } from './Button';
-import { SquarePayButton } from './SquarePayButton';
 
 interface StickyHeaderProps {
   content: SiteContent['site'];
@@ -32,11 +31,9 @@ export function StickyHeader({ content }: StickyHeaderProps) {
           ))}
         </nav>
         <div className="hidden items-center gap-3 md:flex">
-          <SquarePayButton />
           <Button href={content.primaryCta.href} label={content.primaryCta.label} />
         </div>
         <div className="flex items-center gap-2 md:hidden">
-          <SquarePayButton />
           <Button
             href={content.primaryCta.href}
             label={content.primaryCta.label}

@@ -1,7 +1,6 @@
 import type { SiteContent } from '../lib/content';
 import { Section } from './Section';
 import { SectionHeading } from './SectionHeading';
-import { SquarePayButton } from './SquarePayButton';
 
 interface SpecialOfferSectionProps {
   content: SiteContent['specialOffer'];
@@ -25,9 +24,6 @@ export function SpecialOfferSection({ content }: SpecialOfferSectionProps) {
               </li>
             ))}
           </ul>
-          <div className="mt-8 flex justify-center">
-            <SquarePayButton />
-          </div>
         </div>
       </div>
     </Section>

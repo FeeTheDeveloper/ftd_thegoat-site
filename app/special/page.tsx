@@ -3,7 +3,6 @@ import { siteContent } from '../../lib/content';
 import { Footer } from '../../components/Footer';
 import { LaunchSplash } from '../../components/LaunchSplash';
 import { SpecialOfferSection } from '../../components/SpecialOfferSection';
-import { SquarePayButton } from '../../components/SquarePayButton';
 import { StickyHeader } from '../../components/StickyHeader';
 
 export const metadata: Metadata = {
@@ -32,7 +31,6 @@ export default function SpecialPage() {
             <p className="mx-auto mb-8 max-w-2xl text-xl text-slate-300">
               {specialOffer.description}
             </p>
-            <SquarePayButton />
           </div>
         </section>
 
@@ -49,7 +47,6 @@ export default function SpecialPage() {
               This special offer is available for a limited time. Secure your
               spot today.
             </p>
-            <SquarePayButton />
           </div>
         </section>
       </main>
