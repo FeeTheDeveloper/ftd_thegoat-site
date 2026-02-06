@@ -1,6 +1,6 @@
 /**
  * PAYMENT URL VERIFICATION CHECKLIST:
- * - [x] specialOffer.payUrl matches https://square.link/u/i9Hg5rEc
+ * - [x] SquarePayButton component uses https://square.link/u/i9Hg5rEc?src=embed
  * - [x] footer "Pay Now – $150" link matches https://square.link/u/i9Hg5rEc
  */
 
@@ -234,7 +234,6 @@ export const siteContent = {
       'Mobile responsive & optimized',
     ],
     payButtonLabel: 'Pay Now – $150',
-    payUrl: 'https://square.link/u/i9Hg5rEc',
   },
 };
 

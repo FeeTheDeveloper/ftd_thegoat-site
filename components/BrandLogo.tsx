@@ -18,6 +18,7 @@ export function BrandLogo({
       width={size}
       height={size}
       className={className}
+      priority={size >= 300}
     />
   );
 }

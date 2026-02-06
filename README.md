@@ -1,20 +1,25 @@
 # Fee The Developer (FTD) Site
 
-Executive product engineering portfolio and client engagement site. Features a **$150 Website Special** promotional page at `/special`.
+## Overview
+
+Marketing site for Fee The Developer — executive product engineering services.
+
+- Homepage with animated launch splash
+- `/special` page for the $150 Website Special offer
+- Square embedded checkout button (opens in popup)
 
 ---
 
-## Tech Stack
+## Tech
 
 - **Next.js 14** (App Router)
 - **TypeScript**
 - **TailwindCSS**
+- **Node 20+**
 
 ---
 
-## Local Development
-
-**Requirements:** Node 20+
+## Local Run (Codespace)
 
 ```bash
 npm install
@@ -23,83 +28,77 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
----
-
-## Configuration
-
-Copy the example environment file:
-
-```bash
-cp .env.example .env.local
-```
-
-| Name | Required | Description |
-|------|----------|-------------|
-| `OPENAI_API_KEY` | Optional | OpenAI API key for the chat widget |
-| `POWER_AUTOMATE_LEAD_WEBHOOK_URL` | Optional | Power Automate webhook for contact form submissions |
-
-The site runs without these variables—features gracefully degrade when not configured.
-
----
-
-## Content + Payment Link
-
-All site content is centralized in `lib/content.ts`.
-
-**Current payment link:** `https://square.link/u/i9Hg5rEc`
-
-This URL powers:
-- Footer "Pay Now – $150" link (`footer.links`)
-- Special offer CTA button (`specialOffer.payUrl`)
-
-To update the payment link, modify both locations in `lib/content.ts`.
-
----
-
-## Branding / Logo
-
-| Asset | Path |
-|-------|------|
-| Logo PNG | `public/brand/logos/ftd-logo.png` |
-| Logo SVG | `public/brand/logos/ftd-logo.svg` |
-
-The `BrandLogo` component (`components/BrandLogo.tsx`) renders the logo and is used in:
-- `StickyHeader` (header logo)
-- `HeroSection` (splash logo with fade-in animation)
-
----
-
-## Deployment (Vercel)
-
-### New Project Setup
-
-1. Import this GitHub repository in Vercel
-2. Configure the following settings:
-
-| Setting | Value |
-|---------|-------|
-| Framework Preset | Next.js |
-| Root Directory | `.` (repo root) |
-| Build Command | `npm run build` |
-| Output Directory | `.next` |
-| Install Command | `npm install` |
-| Node.js Version | 20.x |
-
-3. Add environment variables from `.env.example` in the Vercel dashboard
-4. Deploy
-
----
-
-## Quality Checks
-
-Before deploying, verify:
-
-- [ ] `npm run build` completes without errors
-- [ ] `npm run lint` passes
-- [ ] Old payment link removed (search for `U8SKZ6Gr` returns 0 results)
+Build check:
 
 ```bash
 npm run build
-npm run lint
-grep -r "U8SKZ6Gr" . --include="*.ts" --include="*.tsx"
 ```
+
+---
+
+## Assets
+
+| Asset | Location |
+|-------|----------|
+| Logo PNG | `public/brand/logos/ftd-logo.png` |
+
+The `LaunchSplash` component uses `BrandLogo` to display a full-screen animated logo on first page load (once per session).
+
+---
+
+## Payment Checkout
+
+Payment is handled by the `SquarePayButton` component (`components/SquarePayButton.tsx`).
+
+- Opens Square checkout in a centered popup window
+- No backend or API required
+
+**Checkout URL:**
+
+```
+https://square.link/u/i9Hg5rEc?src=embed
+```
+
+---
+
+## Vercel Deployment (New Project)
+
+### Step-by-Step Checklist
+
+1. [ ] Go to [vercel.com](https://vercel.com) and sign in
+2. [ ] Click **Add New → Project**
+3. [ ] Import this GitHub repository
+4. [ ] Configure project settings:
+
+| Setting | Value |
+|---------|-------|
+| Framework Preset | **Next.js** |
+| Root Directory | `.` (repo root) |
+| Install Command | `npm install` |
+| Build Command | `npm run build` |
+| Output Directory | `.next` |
+| Node.js Version | **20.x** |
+
+5. [ ] (Optional) Add environment variables if using chat/contact features:
+   - `OPENAI_API_KEY`
+   - `POWER_AUTOMATE_LEAD_WEBHOOK_URL`
+6. [ ] Click **Deploy**
+7. [ ] Wait for build to complete (~1-2 minutes)
+
+---
+
+## Smoke Test Checklist
+
+After deployment, verify:
+
+- [ ] Homepage loads at your Vercel URL
+- [ ] Launch splash appears once (then not again in same session)
+- [ ] Header with logo and navigation renders
+- [ ] `/special` page opens and displays the offer
+- [ ] "Pay Now – $150" button opens Square checkout popup
+
+---
+
+## Support
+
+Questions? Contact [fee@feethedeveloper.com](mailto:fee@feethedeveloper.com)

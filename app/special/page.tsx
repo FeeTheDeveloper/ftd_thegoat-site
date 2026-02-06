@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import { siteContent } from '../../lib/content';
-import { StickyHeader } from '../../components/StickyHeader';
 import { Footer } from '../../components/Footer';
+import { LaunchSplash } from '../../components/LaunchSplash';
 import { SpecialOfferSection } from '../../components/SpecialOfferSection';
-import { Button } from '../../components/Button';
+import { SquarePayButton } from '../../components/SquarePayButton';
+import { StickyHeader } from '../../components/StickyHeader';
 
 export const metadata: Metadata = {
   title: '$150 Website Special | Fee The Developer',
@@ -16,6 +17,7 @@ export default function SpecialPage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
+      <LaunchSplash />
       <StickyHeader content={siteContent.site} />
       <main>
         {/* Hero Section */}
@@ -30,10 +32,7 @@ export default function SpecialPage() {
             <p className="mx-auto mb-8 max-w-2xl text-xl text-slate-300">
               {specialOffer.description}
             </p>
-            <Button
-              href={specialOffer.payUrl}
-              label={specialOffer.payButtonLabel}
-            />
+            <SquarePayButton />
           </div>
         </section>
 
@@ -50,10 +49,7 @@ export default function SpecialPage() {
               This special offer is available for a limited time. Secure your
               spot today.
             </p>
-            <Button
-              href={specialOffer.payUrl}
-              label={specialOffer.payButtonLabel}
-            />
+            <SquarePayButton />
           </div>
         </section>
       </main>

@@ -1,16 +1,14 @@
 import Link from 'next/link';
 import type { SiteContent } from '../lib/content';
-import { siteContent } from '../lib/content';
 import { BrandLogo } from './BrandLogo';
 import { Button } from './Button';
+import { SquarePayButton } from './SquarePayButton';
 
 interface StickyHeaderProps {
   content: SiteContent['site'];
 }
 
 export function StickyHeader({ content }: StickyHeaderProps) {
-  const { specialOffer } = siteContent;
-
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 py-4">
@@ -34,19 +32,11 @@ export function StickyHeader({ content }: StickyHeaderProps) {
           ))}
         </nav>
         <div className="hidden items-center gap-3 md:flex">
-          <Button
-            href={specialOffer.payUrl}
-            label={specialOffer.payButtonLabel}
-            variant="secondary"
-          />
+          <SquarePayButton />
           <Button href={content.primaryCta.href} label={content.primaryCta.label} />
         </div>
         <div className="flex items-center gap-2 md:hidden">
-          <Button
-            href={specialOffer.payUrl}
-            label="Pay $150"
-            variant="secondary"
-          />
+          <SquarePayButton />
           <Button
             href={content.primaryCta.href}
             label={content.primaryCta.label}
