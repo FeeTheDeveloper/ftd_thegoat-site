@@ -1,4 +1,5 @@
 import type { SiteContent } from '../lib/content';
+import { BrandLogo } from './BrandLogo';
 import { Button } from './Button';
 
 interface HeroSectionProps {
@@ -10,6 +11,10 @@ export function HeroSection({ hero, site }: HeroSectionProps) {
   return (
     <section id="top" className="pt-16">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-16">
+        <div className="flex justify-center mb-10 animate-fade-in-scale">
+          <BrandLogo size={180} variant="icon" className="md:hidden" />
+          <BrandLogo size={260} variant="icon" className="hidden md:block" />
+        </div>
         <div className="space-y-6">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">

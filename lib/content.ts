@@ -1,4 +1,16 @@
+/**
+ * PAYMENT URL VERIFICATION CHECKLIST:
+ * - [x] specialOffer.payUrl matches https://square.link/u/i9Hg5rEc
+ * - [x] footer "Pay Now – $150" link matches https://square.link/u/i9Hg5rEc
+ */
+
 export const siteContent = {
+  brand: {
+    logos: {
+      png: '/brand/logos/ftd-logo.png',
+      svg: '/brand/logos/ftd-logo.svg',
+    },
+  },
   site: {
     name: 'Fee The Developer',
     title: 'Fee The Developer | Executive Product Engineering',
@@ -206,7 +218,7 @@ export const siteContent = {
       { label: 'LinkedIn', href: '#' },
       { label: 'GitHub', href: '#' },
       { label: 'Calendly', href: '#' },
-      { label: 'Pay Now – $150', href: 'https://square.link/u/U8SKZ6Gr?src=sheet' },
+      { label: 'Pay Now – $150', href: 'https://square.link/u/i9Hg5rEc' },
     ],
     copyright: '© 2024 Fee The Developer. All rights reserved.',
   },
@@ -222,7 +234,7 @@ export const siteContent = {
       'Mobile responsive & optimized',
     ],
     payButtonLabel: 'Pay Now – $150',
-    payUrl: 'https://square.link/u/U8SKZ6Gr?src=sheet',
+    payUrl: 'https://square.link/u/i9Hg5rEc',
   },
 };
 
