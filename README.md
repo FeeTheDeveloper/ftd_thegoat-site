@@ -56,7 +56,7 @@ Payment is handled by the `SquarePayButton` component (`components/SquarePayButt
 **Checkout URL:**
 
 ```
-https://square.link/u/i9Hg5rEc?src=embed
+https://square.link/u/5dvy3O3D?src=embed
 ```
 
 ---
