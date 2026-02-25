@@ -220,6 +220,7 @@ export const siteContent = {
     subtitle: 'Top 10 Yelp Dallas Celebration',
     description:
       'Complete website design, 2‑year hosting, and domain registration for a single $150 fee. Limited-time offer.',
+    checkoutUrl: 'https://square.link/u/5dvy3O3D',
     bulletPoints: [
       'Custom website design (1–3 pages)',
       '2 years of hosting included',

@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "openai": ["lib/openai"]
+      "openai": ["lib/openai"],
+      "clsx": ["lib/clsx"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
