@@ -1,3 +1,9 @@
+const squareLinks = {
+  websiteSpecial: process.env.NEXT_PUBLIC_SQUARE_150_PAYMENT_LINK || '',
+  strategicSprint: process.env.NEXT_PUBLIC_SQUARE_STRATEGIC_SPRINT_LINK || '',
+  operatingPartner: process.env.NEXT_PUBLIC_SQUARE_OPERATING_PARTNER_LINK || '',
+};
+
 export const siteContent = {
   brand: {
     logos: {
@@ -115,6 +121,11 @@ export const siteContent = {
       },
     ],
   },
+  offers: {
+    title: 'Choose your lane',
+    subtitle:
+      'Pay now for fixed-scope offers or request access for higher-stakes builds.',
+  },
   pricing: {
     title: 'Engagement models',
     subtitle:
@@ -130,7 +141,10 @@ export const siteContent = {
           'Executive updates and decision logs',
           'Launch-ready handoff package',
         ],
-        cta: { label: 'Start an Engagement', href: '#contact' },
+        cta: {
+          label: 'Pay Strategic Sprint',
+          href: squareLinks.strategicSprint || '#contact',
+        },
       },
       {
         name: 'Operating Partner',
@@ -142,7 +156,10 @@ export const siteContent = {
           'Weekly executive briefings',
           'Priority delivery and stability work',
         ],
-        cta: { label: 'Engage', href: '#contact' },
+        cta: {
+          label: 'Pay Operating Partner',
+          href: squareLinks.operatingPartner || '#contact',
+        },
       },
       {
         name: 'Transformation',
@@ -220,6 +237,7 @@ export const siteContent = {
     subtitle: 'Top 10 Yelp Dallas Celebration',
     description:
       'Complete website design, 2‑year hosting, and domain registration for a single $150 fee. Limited-time offer.',
+    checkoutUrl: squareLinks.websiteSpecial,
     bulletPoints: [
       'Custom website design (1–3 pages)',
       '2 years of hosting included',

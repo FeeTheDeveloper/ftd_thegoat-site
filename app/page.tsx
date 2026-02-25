@@ -3,6 +3,7 @@ import { FaqSection } from '../components/FaqSection';
 import { Footer } from '../components/Footer';
 import { HeroSection } from '../components/HeroSection';
 import { LaunchSplash } from '../components/LaunchSplash';
+import { OffersSection } from '../components/OffersSection';
 import { PortfolioSection } from '../components/PortfolioSection';
 import { PricingSection } from '../components/PricingSection';
 import { ProcessSection } from '../components/ProcessSection';
@@ -22,6 +23,10 @@ export default function HomePage() {
         <ServicesSection content={siteContent.services} />
         <ProcessSection content={siteContent.process} />
         <PortfolioSection content={siteContent.portfolio} />
+        <OffersSection
+          content={siteContent.offers}
+          specialOffer={siteContent.specialOffer}
+        />
         <PricingSection content={siteContent.pricing} />
         <FaqSection content={siteContent.faq} />
         <ContactSection
