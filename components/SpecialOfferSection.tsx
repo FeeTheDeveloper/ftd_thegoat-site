@@ -1,4 +1,5 @@
 import type { SiteContent } from '../lib/content';
+import { PayNowButton } from './PayNowButton';
 import { Section } from './Section';
 import { SectionHeading } from './SectionHeading';
 
@@ -24,6 +25,12 @@ export function SpecialOfferSection({ content }: SpecialOfferSectionProps) {
               </li>
             ))}
           </ul>
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <PayNowButton href={content.checkoutUrl} label="Pay $150 on Square" />
+            <p className="text-xs text-slate-500">
+              Secure Square checkout. Receipt emailed instantly.
+            </p>
+          </div>
         </div>
       </div>
     </Section>

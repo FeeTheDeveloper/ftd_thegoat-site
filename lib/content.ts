@@ -1,5 +1,5 @@
 const squareLinks = {
-  websiteSpecial: process.env.NEXT_PUBLIC_SQUARE_150_PAYMENT_LINK || '',
+  websiteSpecial: process.env.NEXT_PUBLIC_SQUARE_150_PAYMENT_LINK || 'https://square.link/u/5dvy3O3D',
   strategicSprint: process.env.NEXT_PUBLIC_SQUARE_STRATEGIC_SPRINT_LINK || '',
   operatingPartner: process.env.NEXT_PUBLIC_SQUARE_OPERATING_PARTNER_LINK || '',
 };
