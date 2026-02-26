@@ -1,9 +1,3 @@
-const squareLinks = {
-  websiteSpecial: process.env.NEXT_PUBLIC_SQUARE_150_PAYMENT_LINK || '',
-  strategicSprint: process.env.NEXT_PUBLIC_SQUARE_STRATEGIC_SPRINT_LINK || '',
-  operatingPartner: process.env.NEXT_PUBLIC_SQUARE_OPERATING_PARTNER_LINK || '',
-};
-
 export const siteContent = {
   brand: {
     logos: {
@@ -17,7 +11,7 @@ export const siteContent = {
     description:
       'Fee The Developer delivers executive-level product engineering, automation, and AI systems for teams that want inevitability, not noise.',
     primaryCta: {
-      label: 'Request Access',
+      label: 'Book Consultation',
       href: '#contact',
     },
     nav: [
@@ -27,7 +21,6 @@ export const siteContent = {
       { label: 'Engagements', href: '#pricing' },
       { label: 'Standards', href: '#faq' },
       { label: 'Contact', href: '#contact' },
-      { label: '$150 Website Special', href: '/special' },
     ],
   },
   hero: {
@@ -121,57 +114,46 @@ export const siteContent = {
       },
     ],
   },
-  offers: {
-    title: 'Choose your lane',
-    subtitle:
-      'Pay now for fixed-scope offers or request access for higher-stakes builds.',
-  },
   pricing: {
-    title: 'Engagement models',
+    title: 'Custom packages built around your goals',
     subtitle:
-      'Structured engagement paths designed for decisive execution.',
+      'Every site begins with a consultation. Pricing below reflects starting points, including hosting and domain.',
     tiers: [
       {
-        name: 'Strategic Sprint',
-        price: 'From $5,000',
-        cadence: 'per engagement',
-        description: 'Focused delivery for a single high-impact outcome.',
+        name: 'Starter Site',
+        price: 'From $150',
+        cadence: 'one-time',
+        description: 'Basic landing page or microsite. Perfect for event pages, portfolios, and single-product pages.',
         features: [
-          '1-2 week execution window',
-          'Executive updates and decision logs',
-          'Launch-ready handoff package',
+          '1–3 pages custom design',
+          '1 year of hosting & domain included',
+          'Responsive on mobile & desktop',
         ],
-        cta: {
-          label: 'Pay Strategic Sprint',
-          href: squareLinks.strategicSprint || '#contact',
-        },
+        cta: { label: 'Book Consultation', href: '#contact' },
       },
       {
-        name: 'Operating Partner',
-        price: 'From $9,000',
-        cadence: 'per month',
-        description: 'Embedded execution for teams shipping continuous value.',
+        name: 'Growth Site',
+        price: 'From $500',
+        cadence: 'one-time',
+        description: 'A small business website with up to 5 pages, light CMS integration, and extended hosting.',
         features: [
-          'Dedicated sprint cadence',
-          'Weekly executive briefings',
-          'Priority delivery and stability work',
+          'Up to 5 pages and basic CMS',
+          '2 years of hosting & domain included',
+          'Newsletter signup or contact form',
         ],
-        cta: {
-          label: 'Pay Operating Partner',
-          href: squareLinks.operatingPartner || '#contact',
-        },
+        cta: { label: 'Book Consultation', href: '#contact' },
       },
       {
-        name: 'Transformation',
-        price: 'Custom',
-        cadence: 'retainer',
-        description: 'Multi-team initiatives and platform-level modernization.',
+        name: 'Premium Web Package',
+        price: 'From $2,500',
+        cadence: 'one-time',
+        description: 'High‑end custom site with advanced integrations. Best for larger businesses or projects needing extra polish.',
         features: [
-          'Cross-functional alignment',
-          'Security, compliance, and governance',
-          'Custom SLAs and rollout plans',
+          'Unlimited pages & advanced integrations',
+          'Bespoke design system & animations',
+          'Priority support & strategy sessions',
         ],
-        cta: { label: 'Request Access', href: '#contact' },
+        cta: { label: 'Book Consultation', href: '#contact' },
       },
     ],
   },
@@ -196,14 +178,14 @@ export const siteContent = {
     ],
   },
   contact: {
-    title: 'Engagement request',
+    title: 'Book a consultation',
     subtitle:
       'Share the outcome you need. Responses are typically delivered within two business days.',
     form: {
-      title: 'Request access',
+      title: 'Book a consultation',
       description:
         'Provide the essentials. A short response with next steps will follow.',
-      buttonLabel: 'Request Access',
+      buttonLabel: 'Book Consultation',
     },
     methods: [
       {
@@ -231,19 +213,6 @@ export const siteContent = {
       { label: 'Calendly', href: '#' },
     ],
     copyright: '© 2024 Fee The Developer. All rights reserved.',
-  },
-  specialOffer: {
-    title: '$150 Website Special',
-    subtitle: 'Top 10 Yelp Dallas Celebration',
-    description:
-      'Complete website design, 2‑year hosting, and domain registration for a single $150 fee. Limited-time offer.',
-    checkoutUrl: squareLinks.websiteSpecial,
-    bulletPoints: [
-      'Custom website design (1–3 pages)',
-      '2 years of hosting included',
-      '2 years of domain registration included',
-      'Mobile responsive & optimized',
-    ],
   },
 };
 
