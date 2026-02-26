@@ -190,8 +190,8 @@ export const siteContent = {
     methods: [
       {
         label: 'Direct line',
-        value: 'fee@feethedeveloper.com',
-        href: 'mailto:fee@feethedeveloper.com',
+        value: 'contact@feethedeveloper.com',
+        href: 'mailto:contact@feethedeveloper.com',
       },
       {
         label: 'Engagement window',

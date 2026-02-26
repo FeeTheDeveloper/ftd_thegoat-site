@@ -129,4 +129,4 @@ After each deployment, verify:
 
 ## Support
 
-Questions? Contact [fee@feethedeveloper.com](mailto:fee@feethedeveloper.com)
+Questions? Contact [contact@feethedeveloper.com](mailto:contact@feethedeveloper.com)

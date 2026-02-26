@@ -8,7 +8,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ hero, site }: HeroSectionProps) {
   return (
-    <section id="top" className="pt-16">
+    <section id="top" className="pt-24 lg:pt-28">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-16">
         <div className="space-y-6">
           <div>
