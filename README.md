@@ -4,9 +4,11 @@
 
 Marketing site for **Fee The Developer** — consultation-first web development services.
 
+- Dark theme with battle-red (`#c1121f`) accent palette
 - Homepage with animated launch splash
 - `/special` page explaining the consultation-first approach
 - All CTAs drive visitors to book a consultation via the contact form
+- AI-powered concierge chat widget
 
 ---
 
@@ -16,9 +18,26 @@ Marketing site for **Fee The Developer** — consultation-first web development 
 |-------|------|
 | Framework | Next.js 14 (App Router) |
 | Language | TypeScript |
-| Styling | TailwindCSS 3 |
+| Styling | TailwindCSS 3 + CSS custom properties |
 | Runtime | Node 20+ |
 | Hosting | Vercel |
+
+---
+
+## Design System
+
+The site uses CSS custom properties defined in `styles/globals.css` and mapped to Tailwind utilities in `tailwind.config.ts`:
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--bg` | `#0b0b0c` | Deep charcoal page background |
+| `--panel` | `#1c1c1e` | Dark graphite cards / panels |
+| `--primary` | `#c1121f` | Battle-red buttons & accents |
+| `--text` | `#f5f5f5` | Off-white primary text |
+| `--muted` | `#a0a0a0` | Gray secondary text |
+| `--border` | `#333333` | Medium gray borders |
+
+Brand logo: `public/brand/logos/ftd-badge-red.png`
 
 ---
 
@@ -43,19 +62,25 @@ npm run build && npm start
 
 ```
 app/
-  layout.tsx          # Root layout
+  layout.tsx          # Root layout (dark bg)
   page.tsx            # Homepage
   special/page.tsx    # Consultation‑First Services page
   api/                # API routes (chat, contact, health)
 components/
+  BrandLogo.tsx       # Logo component (ftd-badge-red.png)
   LaunchSplash.tsx    # Animated splash (once per session)
+  StickyHeader.tsx    # Dark header with red CTA
   PricingSection.tsx  # Three consultation-driven pricing tiers
   ContactSection.tsx  # Contact / consultation booking form
+  ChatWidget.tsx      # AI concierge chat widget
   ...
 lib/
-  content.ts          # All site copy & pricing data
+  content.ts          # All site copy, pricing data & contact info
+styles/
+  globals.css         # CSS custom properties & Tailwind directives
 public/
-  brand/logos/        # Brand assets
+  brand/logos/        # Brand assets (ftd-badge-red.png)
+tailwind.config.ts    # Custom color tokens
 vercel.json           # Vercel framework hint
 ```
 
@@ -117,13 +142,15 @@ Every push to the `main` branch triggers an automatic production deployment. Pre
 
 After each deployment, verify:
 
-- [ ] Homepage loads at your Vercel URL
+- [ ] Homepage loads with dark background (`#0b0b0c`) at your Vercel URL
+- [ ] Red badge logo displays in header and splash screen
 - [ ] Launch splash animates once, then never blocks clicks
-- [ ] Header with logo and navigation renders
+- [ ] Header with logo and navigation renders (dark panel with red CTA)
 - [ ] Scrolling to each section works (Capabilities, Pricing, FAQ, Contact)
 - [ ] `/special` page loads with "Consultation‑First Services" content
-- [ ] All **"Book Consultation"** buttons scroll to / link to the contact form
+- [ ] All **"Book Consultation"** buttons (red) scroll to / link to the contact form
 - [ ] Contact form submits without errors (if webhook is configured)
+- [ ] Chat widget opens and responds with dark-themed UI
 
 ---
 

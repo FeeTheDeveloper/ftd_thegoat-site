@@ -62,7 +62,7 @@ export function ContactSection({ content, primaryCta }: ContactSectionProps) {
   }
 
   return (
-    <Section id="contact" className="bg-slate-50">
+    <Section id="contact" className="bg-panel">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6">
         <div className="flex flex-col justify-between gap-8 lg:flex-row">
           <SectionHeading title={content.title} subtitle={content.subtitle} />
@@ -74,54 +74,54 @@ export function ContactSection({ content, primaryCta }: ContactSectionProps) {
           {content.methods.map((method) => (
             <div
               key={method.label}
-              className="rounded-2xl border border-slate-200 bg-white p-6"
+              className="rounded-2xl border border-border bg-bg p-6"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">
                 {method.label}
               </p>
               {method.href ? (
                 <Link
                   href={method.href}
-                  className="mt-3 block text-sm font-semibold text-slate-900 hover:text-slate-700"
+                  className="mt-3 block text-sm font-semibold text-text hover:text-primary"
                 >
                   {method.value}
                 </Link>
               ) : (
-                <p className="mt-3 text-sm font-semibold text-slate-900">
+                <p className="mt-3 text-sm font-semibold text-text">
                   {method.value}
                 </p>
               )}
             </div>
           ))}
         </div>
-        <div className="rounded-2xl border border-slate-200 bg-white p-8">
+        <div className="rounded-2xl border border-border bg-bg p-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div className="max-w-xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-muted">
                 {content.form.title}
               </p>
-              <h3 className="mt-3 text-2xl font-semibold text-slate-900">
+              <h3 className="mt-3 text-2xl font-semibold text-text">
                 {content.title}
               </h3>
-              <p className="mt-3 text-sm text-slate-600">
+              <p className="mt-3 text-sm text-muted">
                 {content.form.description}
               </p>
             </div>
             <form className="grid w-full gap-4 lg:max-w-xl" onSubmit={handleSubmit}>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                  <label className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
                     Name
                   </label>
                   <input
                     name="name"
                     required
                     placeholder="Your name"
-                    className="rounded-xl border border-slate-200 px-4 py-2 text-sm text-slate-900 focus:border-slate-400 focus:outline-none"
+                    className="rounded-xl border border-border bg-panel px-4 py-2 text-sm text-text placeholder:text-muted focus:border-primary focus:outline-none"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                  <label className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
                     Email
                   </label>
                   <input
@@ -129,34 +129,34 @@ export function ContactSection({ content, primaryCta }: ContactSectionProps) {
                     name="email"
                     required
                     placeholder="name@company.com"
-                    className="rounded-xl border border-slate-200 px-4 py-2 text-sm text-slate-900 focus:border-slate-400 focus:outline-none"
+                    className="rounded-xl border border-border bg-panel px-4 py-2 text-sm text-text placeholder:text-muted focus:border-primary focus:outline-none"
                   />
                 </div>
               </div>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                  <label className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
                     Engagement type
                   </label>
                   <input
                     name="engagement"
                     placeholder="Sprint, Operating Partner, Transformation"
-                    className="rounded-xl border border-slate-200 px-4 py-2 text-sm text-slate-900 focus:border-slate-400 focus:outline-none"
+                    className="rounded-xl border border-border bg-panel px-4 py-2 text-sm text-text placeholder:text-muted focus:border-primary focus:outline-none"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                  <label className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
                     Timeline
                   </label>
                   <input
                     name="timeline"
                     placeholder="Target start date"
-                    className="rounded-xl border border-slate-200 px-4 py-2 text-sm text-slate-900 focus:border-slate-400 focus:outline-none"
+                    className="rounded-xl border border-border bg-panel px-4 py-2 text-sm text-text placeholder:text-muted focus:border-primary focus:outline-none"
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                <label className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
                   Outcomes
                 </label>
                 <textarea
@@ -164,17 +164,17 @@ export function ContactSection({ content, primaryCta }: ContactSectionProps) {
                   rows={4}
                   required
                   placeholder="Share the outcomes, constraints, or targets."
-                  className="rounded-xl border border-slate-200 px-4 py-2 text-sm text-slate-900 focus:border-slate-400 focus:outline-none"
+                  className="rounded-xl border border-border bg-panel px-4 py-2 text-sm text-text placeholder:text-muted focus:border-primary focus:outline-none"
                 />
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-muted">
                   Engagement requests are reviewed daily.
                 </p>
                 <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {status === 'submitting' ? 'Submitting...' : content.form.buttonLabel}
                 </button>

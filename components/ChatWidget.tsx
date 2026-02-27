@@ -120,19 +120,19 @@ export function ChatWidget() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       {isOpen ? (
-        <div className="w-[90vw] max-w-sm rounded-2xl border border-slate-200 bg-white shadow-xl">
-          <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
+        <div className="w-[90vw] max-w-sm rounded-2xl border border-border bg-panel shadow-xl">
+          <div className="flex items-center justify-between border-b border-border px-4 py-3">
             <div>
-              <p className="text-sm font-semibold text-slate-900">
+              <p className="text-sm font-semibold text-text">
                 Fee&apos;s Concierge
               </p>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-muted">
                 Executive answers, clear next steps.
               </p>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-xs font-semibold text-slate-500 transition hover:text-slate-900"
+              className="text-xs font-semibold text-muted transition hover:text-text"
               aria-label="Close chat"
             >
               Close
@@ -151,8 +151,8 @@ export function ChatWidget() {
                 <div
                   className={
                     message.role === 'user'
-                      ? 'max-w-[80%] rounded-2xl bg-slate-900 px-4 py-2 text-white'
-                      : 'max-w-[80%] rounded-2xl bg-slate-100 px-4 py-2 text-slate-900'
+                      ? 'max-w-[80%] rounded-2xl bg-primary px-4 py-2 text-white'
+                      : 'max-w-[80%] rounded-2xl bg-bg px-4 py-2 text-text'
                   }
                 >
                   {message.content}
@@ -161,14 +161,14 @@ export function ChatWidget() {
             ))}
             {isLoading ? (
               <div className="flex justify-start">
-                <div className="rounded-2xl bg-slate-100 px-4 py-2 text-slate-500">
+              <div className="rounded-2xl bg-bg px-4 py-2 text-muted">
                   Thinking...
                 </div>
               </div>
             ) : null}
             <div ref={endRef} />
           </div>
-          <div className="border-t border-slate-100 px-4 py-3">
+          <div className="border-t border-border px-4 py-3">
             {error ? (
               <p className="mb-2 text-xs text-rose-500">{error}</p>
             ) : null}
@@ -183,12 +183,12 @@ export function ChatWidget() {
                   }
                 }}
                 placeholder="Type your question..."
-                className="flex-1 rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-900 focus:border-slate-400 focus:outline-none"
+                className="flex-1 rounded-full border border-border bg-bg px-4 py-2 text-sm text-text placeholder:text-muted focus:border-primary focus:outline-none"
               />
               <button
                 onClick={() => void handleSend()}
                 disabled={isLoading}
-                className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300"
+                className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:bg-red-900"
               >
                 Send
               </button>
@@ -198,7 +198,7 @@ export function ChatWidget() {
       ) : null}
       <button
         onClick={() => setIsOpen((open) => !open)}
-        className="flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-slate-800"
+        className="flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-red-700"
         aria-label="Open chat"
       >
         {isOpen ? 'Hide Concierge' : 'Concierge'}

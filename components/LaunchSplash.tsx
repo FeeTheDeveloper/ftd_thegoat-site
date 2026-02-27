@@ -34,7 +34,7 @@ export function LaunchSplash() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-slate-950 to-slate-900 transition-all duration-700 ease-out ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-[#0b0b0c] to-[#1c1c1e] transition-all duration-700 ease-out ${
         fading ? 'pointer-events-none opacity-0 scale-95' : 'pointer-events-auto opacity-100 scale-100'
       }`}
     >

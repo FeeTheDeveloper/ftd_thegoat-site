@@ -12,7 +12,7 @@ import { siteContent } from '../lib/content';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <div className="min-h-screen bg-bg text-text">
       <LaunchSplash />
       <StickyHeader content={siteContent.site} />
       <main>

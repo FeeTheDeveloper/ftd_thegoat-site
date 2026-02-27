@@ -8,6 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        bg: 'var(--bg)',
+        panel: 'var(--panel)',
+        primary: 'var(--primary)',
+        text: 'var(--text)',
+        muted: 'var(--muted)',
+        border: 'var(--border)',
+      },
       keyframes: {
         'fade-in-scale': {
           '0%': { opacity: '0', transform: 'scale(1.05)' },

@@ -1,8 +1,9 @@
 export const siteContent = {
   brand: {
+    name: 'Fee The Developer',
     logos: {
-      png: '/brand/logos/ftd-logo.png',
-      svg: '/brand/logos/ftd-logo.svg',
+      png: '/brand/logos/ftd-badge-red.png',
+      svg: '/brand/logos/ftd-badge-red.png',
     },
   },
   site: {

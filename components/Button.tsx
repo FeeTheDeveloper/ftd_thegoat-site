@@ -8,9 +8,9 @@ interface ButtonProps {
 
 const variantStyles: Record<NonNullable<ButtonProps['variant']>, string> = {
   primary:
-    'bg-slate-900 text-white hover:bg-slate-800 focus-visible:outline-slate-900',
+    'bg-primary text-white hover:bg-red-700 focus-visible:outline-primary',
   secondary:
-    'border border-slate-300 text-slate-900 hover:border-slate-400 hover:text-slate-700',
+    'border border-border text-text hover:border-muted hover:text-muted',
 };
 
 export function Button({ href, label, variant = 'primary' }: ButtonProps) {

@@ -13,23 +13,23 @@ export const metadata: Metadata = {
 
 export default function SpecialPage() {
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <div className="min-h-screen bg-bg text-text">
       <LaunchSplash />
       <StickyHeader content={siteContent.site} />
       <main>
-        <section className="bg-gradient-to-br from-slate-900 to-slate-800 py-24 text-white">
+        <section className="bg-gradient-to-br from-[#0b0b0c] to-[#1c1c1e] py-24 text-white">
           <div className="mx-auto max-w-4xl px-6 text-center">
             <h1 className="mb-6 text-4xl font-bold md:text-6xl">
               Consultation‑First Services
             </h1>
-            <p className="mx-auto mb-8 max-w-2xl text-xl text-slate-300">
+            <p className="mx-auto mb-8 max-w-2xl text-xl text-muted">
               Every project begins with a consultation. Pricing starts at $150
               and scales up to $2,500 depending on your needs. Book a
               consultation to get a precise quote.
             </p>
             <Link
               href="/#contact"
-              className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white transition hover:bg-red-700"
             >
               Book Consultation
             </Link>

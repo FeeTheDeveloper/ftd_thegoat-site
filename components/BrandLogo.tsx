@@ -13,7 +13,7 @@ export function BrandLogo({
 }: BrandLogoProps) {
   return (
     <Image
-      src="/brand/logos/ftd-logo.png"
+      src="/brand/logos/ftd-badge-red.png"
       alt="FTD Logo"
       width={size}
       height={size}

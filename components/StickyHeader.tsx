@@ -9,22 +9,22 @@ interface StickyHeaderProps {
 
 export function StickyHeader({ content }: StickyHeaderProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border bg-panel/90 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 py-4">
         <Link href="#top" className="flex items-center gap-3">
           <BrandLogo size={36} className="md:hidden" />
           <BrandLogo size={44} className="hidden md:block" />
           <div className="flex flex-col">
-            <span className="text-sm font-semibold text-slate-900">
+            <span className="text-sm font-semibold text-text">
               {content.name}
             </span>
-            <p className="text-xs text-slate-500">{content.title}</p>
+            <p className="text-xs text-muted">{content.title}</p>
           </div>
         </Link>
-        <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
+        <nav className="hidden items-center gap-6 text-sm font-medium text-muted md:flex">
           {content.nav.map((item) => (
             <span key={item.href} className="inline-flex">
-              <Link href={item.href} className="hover:text-slate-900">
+              <Link href={item.href} className="hover:text-text">
                 {item.label}
               </Link>
             </span>
