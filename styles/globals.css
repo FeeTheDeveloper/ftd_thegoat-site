@@ -12,6 +12,12 @@
   color-scheme: dark;
 }
 
+/* Ensure anchor navigation scrolls below the sticky header (≈7rem) */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+
 body {
   @apply antialiased;
   background-color: var(--bg);
