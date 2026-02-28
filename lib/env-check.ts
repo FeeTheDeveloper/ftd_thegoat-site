@@ -49,6 +49,30 @@ const SERVER_ENV_VARS: EnvVarConfig[] = [
     productionOnly: false,
     description: 'Optional Upstash Redis token for distributed rate limiting',
   },
+  {
+    name: 'SENTRY_DSN',
+    required: false,
+    productionOnly: true,
+    description: 'Sentry DSN for error monitoring (server-side)',
+  },
+  {
+    name: 'SENTRY_AUTH_TOKEN',
+    required: false,
+    productionOnly: true,
+    description: 'Sentry auth token for source map upload (build-time only)',
+  },
+  {
+    name: 'SENTRY_ORG',
+    required: false,
+    productionOnly: true,
+    description: 'Sentry organization slug',
+  },
+  {
+    name: 'SENTRY_PROJECT',
+    required: false,
+    productionOnly: true,
+    description: 'Sentry project slug',
+  },
 ];
 
 /** Client-safe environment variables (NEXT_PUBLIC_* prefix) */
@@ -58,6 +82,12 @@ const CLIENT_ENV_VARS: EnvVarConfig[] = [
     required: false,
     productionOnly: true,
     description: 'Cloudflare Turnstile client-side site key',
+  },
+  {
+    name: 'NEXT_PUBLIC_SENTRY_DSN',
+    required: false,
+    productionOnly: true,
+    description: 'Sentry DSN for client-side error monitoring (safe to expose)',
   },
 ];
 
@@ -70,6 +100,7 @@ const FORBIDDEN_PUBLIC_NAMES = [
   'POWER_AUTOMATE_LEAD_WEBHOOK_URL',
   'TURNSTILE_SECRET_KEY',
   'UPSTASH_REDIS_REST_TOKEN',
+  'SENTRY_AUTH_TOKEN',
 ];
 
 function checkForbiddenPublicVars(): string[] {

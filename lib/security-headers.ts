@@ -10,6 +10,8 @@ export const cspConfig = {
     "'self'",
     // Cloudflare Turnstile
     'https://challenges.cloudflare.com',
+    // Sentry browser SDK
+    'https://browser.sentry-cdn.com',
   ],
 
   /** Domains allowed for styles */
@@ -35,6 +37,14 @@ export const cspConfig = {
     "'self'",
     // Cloudflare Turnstile verification
     'https://challenges.cloudflare.com',
+    // Sentry error reporting and performance data
+    'https://*.ingest.sentry.io',
+  ],
+
+  /** Worker sources (Sentry uses a web worker for session replay) */
+  workerSrc: [
+    "'self'",
+    'blob:',
   ],
 
   /** Domains allowed to frame this site (embedding) */
@@ -66,6 +76,7 @@ export function buildCsp(): string {
     `font-src ${cspConfig.fontSrc.join(' ')}`,
     `connect-src ${cspConfig.connectSrc.join(' ')}`,
     `frame-src ${cspConfig.frameSrc.join(' ')}`,
+    `worker-src ${cspConfig.workerSrc.join(' ')}`,
     `form-action ${cspConfig.formAction.join(' ')}`,
     `base-uri ${cspConfig.baseUri.join(' ')}`,
     `frame-ancestors 'none'`,

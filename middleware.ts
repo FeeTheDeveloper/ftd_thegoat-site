@@ -8,6 +8,7 @@ import { getSecurityHeaders } from './lib/security-headers';
  * Responsibilities:
  * 1. Attach security headers to all responses
  * 2. Block HTTP methods that shouldn't reach the app
+ * 3. Attach request correlation IDs for Sentry tracing
  */
 
 const ALLOWED_METHODS = new Set([
@@ -30,6 +31,15 @@ export function middleware(request: NextRequest) {
   for (const [key, value] of Object.entries(securityHeaders)) {
     response.headers.set(key, value);
   }
+
+  // Propagate x-request-id for Sentry request correlation
+  const requestId = request.headers.get('x-request-id');
+  if (requestId) {
+    response.headers.set('x-request-id', requestId);
+  }
+
+  // Set route tag for Sentry (pathname without query params)
+  response.headers.set('x-route', request.nextUrl.pathname);
 
   return response;
 }
