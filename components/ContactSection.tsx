@@ -1,11 +1,13 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import type { SiteContent } from '../lib/content';
 import { Section } from './Section';
 import { SectionHeading } from './SectionHeading';
 import { Button } from './Button';
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '';
 
 interface ContactSectionProps {
   content: SiteContent['contact'];
@@ -17,6 +19,49 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 export function ContactSection({ content, primaryCta }: ContactSectionProps) {
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const [turnstileToken, setTurnstileToken] = useState('');
+
+  // Load Turnstile widget
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY || typeof window === 'undefined') return;
+
+    // Check if script already loaded
+    if (document.querySelector('script[src*="challenges.cloudflare.com"]')) {
+      renderTurnstile();
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad';
+    script.async = true;
+    script.defer = true;
+
+    (window as unknown as Record<string, unknown>).onTurnstileLoad = () => {
+      renderTurnstile();
+    };
+
+    document.head.appendChild(script);
+
+    return () => {
+      delete (window as unknown as Record<string, unknown>).onTurnstileLoad;
+    };
+  }, []);
+
+  function renderTurnstile() {
+    const turnstile = (window as unknown as Record<string, unknown>).turnstile as
+      | { render: (el: HTMLElement, opts: Record<string, unknown>) => void }
+      | undefined;
+
+    if (turnstile && turnstileRef.current && !turnstileRef.current.hasChildNodes()) {
+      turnstile.render(turnstileRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token: string) => setTurnstileToken(token),
+        'expired-callback': () => setTurnstileToken(''),
+        theme: 'dark',
+      });
+    }
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,6 +78,7 @@ export function ContactSection({ content, primaryCta }: ContactSectionProps) {
       timeline: String(formData.get('timeline') || ''),
       outcomes: String(formData.get('outcomes') || ''),
       pageUrl: window.location.href,
+      'cf-turnstile-response': turnstileToken,
     };
 
     try {
@@ -168,6 +214,9 @@ export function ContactSection({ content, primaryCta }: ContactSectionProps) {
                 />
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                {TURNSTILE_SITE_KEY ? (
+                  <div ref={turnstileRef} className="mb-2 sm:mb-0" />
+                ) : null}
                 <p className="text-xs text-muted">
                   Engagement requests are reviewed daily.
                 </p>
