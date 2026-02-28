@@ -1,5 +1,21 @@
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 import OpenAI from 'openai';
+import { createRateLimiter } from '@/lib/rate-limit';
+import { securityLog } from '@/lib/security-logger';
+import { validateEnv } from '@/lib/env-check';
+
+// Run env validation on first import (server-side only)
+validateEnv();
+
+// ---------------------------------------------------------------------------
+// Rate limiter: 10 requests per 60 seconds per IP
+// ---------------------------------------------------------------------------
+const rateLimiter = createRateLimiter({
+  windowMs: 60_000,
+  max: 10,
+  prefix: 'chat',
+});
 
 const MAX_MESSAGES = 20;
 const MAX_CONTENT_LENGTH = 1000;
@@ -26,55 +42,70 @@ type ChatMessage = {
   content: string;
 };
 
-function validateMessages(messages: unknown): ChatMessage[] | null {
-  if (!Array.isArray(messages) || messages.length === 0) {
-    return null;
-  }
+// ---------------------------------------------------------------------------
+// Zod schema for chat messages
+// ---------------------------------------------------------------------------
+const chatMessageSchema = z.object({
+  role: z.enum(['user', 'assistant', 'system']),
+  content: z
+    .string()
+    .min(1, 'Message cannot be empty')
+    .max(MAX_CONTENT_LENGTH, `Message exceeds ${MAX_CONTENT_LENGTH} characters`)
+    .transform((v) => v.trim()),
+});
 
-  if (messages.length > MAX_MESSAGES) {
-    return null;
-  }
+const chatPayloadSchema = z.object({
+  messages: z
+    .array(chatMessageSchema)
+    .min(1, 'At least one message is required')
+    .max(MAX_MESSAGES, `Maximum ${MAX_MESSAGES} messages allowed`),
+});
 
+function validateMessages(messages: ChatMessage[]): ChatMessage[] | null {
   let totalChars = 0;
   const cleaned: ChatMessage[] = [];
 
   for (const message of messages) {
-    if (
-      !message ||
-      typeof message !== 'object' ||
-      !('role' in message) ||
-      !('content' in message)
-    ) {
-      return null;
-    }
-
-    const role = message.role;
-    const content = message.content;
-
-    if (
-      (role !== 'user' && role !== 'assistant' && role !== 'system') ||
-      typeof content !== 'string'
-    ) {
-      return null;
-    }
-
-    const trimmed = content.trim();
-    if (!trimmed || trimmed.length > MAX_CONTENT_LENGTH) {
-      return null;
-    }
-
-    totalChars += trimmed.length;
+    totalChars += message.content.length;
     if (totalChars > MAX_TOTAL_CHARS) {
       return null;
     }
-
-    cleaned.push({ role, content: trimmed });
+    cleaned.push({ role: message.role, content: message.content });
   }
 
   return cleaned;
 }
 
+function getClientIp(request: Request): string {
+  const forwardedFor = request.headers.get('x-forwarded-for');
+  if (forwardedFor) {
+    return forwardedFor.split(',')[0]?.trim() || 'unknown';
+  }
+  return (
+    request.headers.get('x-real-ip') ||
+    request.headers.get('cf-connecting-ip') ||
+    'unknown'
+  );
+}
+
 export async function POST(request: Request) {
+  const ip = getClientIp(request);
+
+  // Rate limit check
+  const rateResult = await rateLimiter.check(ip);
+  if (!rateResult.allowed) {
+    securityLog.rateLimited(request, '/api/chat');
+    return NextResponse.json(
+      { error: 'Too many requests. Please wait before sending another message.' },
+      {
+        status: 429,
+        headers: {
+          'Retry-After': String(Math.ceil((rateResult.resetAt - Date.now()) / 1000)),
+        },
+      }
+    );
+  }
+
   if (!process.env.OPENAI_API_KEY) {
     return NextResponse.json(
       { error: 'Server is missing OpenAI credentials.' },
@@ -82,15 +113,26 @@ export async function POST(request: Request) {
     );
   }
 
-  let payload: { messages?: unknown };
+  let payload: unknown;
   try {
     payload = await request.json();
   } catch {
+    securityLog.validationFailed(request, 'invalid_json');
     return NextResponse.json({ error: 'Invalid JSON payload.' }, { status: 400 });
   }
 
-  const messages = validateMessages(payload.messages);
+  // Zod validation
+  const parsed = chatPayloadSchema.safeParse(payload);
+  if (!parsed.success) {
+    const firstError = parsed.error.errors[0]?.message || 'Invalid message payload.';
+    securityLog.validationFailed(request, firstError);
+    return NextResponse.json({ error: 'Invalid message payload.' }, { status: 400 });
+  }
+
+  // Additional total-chars validation
+  const messages = validateMessages(parsed.data.messages);
   if (!messages) {
+    securityLog.validationFailed(request, 'total_chars_exceeded');
     return NextResponse.json({ error: 'Invalid message payload.' }, { status: 400 });
   }
 
@@ -111,10 +153,12 @@ export async function POST(request: Request) {
       );
     }
 
+    securityLog.chatProcessed(request);
     return NextResponse.json({ reply });
   } catch (error) {
     const message =
       error instanceof Error ? error.message : 'Failed to reach OpenAI.';
+    securityLog.webhookFailed(request, `OpenAI error: ${message}`);
     return NextResponse.json({ error: message }, { status: 502 });
   }
 }
